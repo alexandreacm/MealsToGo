@@ -1,3 +1,4 @@
+import * as React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -8,7 +9,7 @@ import {
   StatusBar,
 } from "react-native";
 
-const isAndroid = Platform.OS == "android";
+const isAndroid = Platform.OS === "android";
 
 export default function App() {
   return (
