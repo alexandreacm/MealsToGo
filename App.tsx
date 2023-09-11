@@ -1,17 +1,16 @@
-import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
   View,
   SafeAreaView,
   Platform,
-  StatusBar
-} from 'react-native';
+  StatusBar,
+} from "react-native";
 
-const isAndroid = Platform.OS == 'android';
+const isAndroid = Platform.OS == "android";
 
 export default function App() {
-
   return (
     <>
       <ExpoStatusBar style="auto" />
@@ -34,16 +33,16 @@ const styles = StyleSheet.create({
     paddingTop: isAndroid ? StatusBar.currentHeight : 0,
   },
   search: {
-    backgroundColor: 'green',
+    backgroundColor: "green",
     padding: 16,
   },
   list: {
     flex: 1,
     padding: 16,
-    backgroundColor: 'blue',
+    backgroundColor: "blue",
   },
   text: {
     fontSize: 18,
-    fontWeight: '600'
-  }
+    fontWeight: "600",
+  },
 });
