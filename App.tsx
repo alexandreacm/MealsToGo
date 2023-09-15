@@ -14,8 +14,11 @@ import {
   Lato_400Regular,
   Lato_700Bold,
 } from "@expo-google-fonts/lato";
+import useLoadingFonts from "./src/hooks/useLoadingFonts";
 
 export default function App() {
+  const isLoaded = useLoadingFonts();
+
   const [isOswaldLoaded] = useOswald({
     Oswald_400Regular,
     Oswald_700Bold,
@@ -25,7 +28,9 @@ export default function App() {
     Lato_700Bold,
   });
 
-  if (isOswaldLoaded || isLatoLoaded) {
+  console.log(isLoaded);
+
+  if (isOswaldLoaded && isLatoLoaded) {
     return (
       <>
         <ThemeProvider theme={theme}>
