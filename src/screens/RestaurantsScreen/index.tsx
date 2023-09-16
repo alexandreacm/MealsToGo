@@ -34,7 +34,7 @@ export function RestaurantsScreen() {
     address: "100 some random street",
     isOpenNow: true,
     rating: 4,
-    isClosedTemporarily: false,
+    isClosedTemporarily: true,
   };
 
   return (
