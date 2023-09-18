@@ -86,8 +86,8 @@ export function RestaurantInfoCard({ restaurant = {} }) {
         <Title>{name}</Title>
         <Section>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((item, idx) => (
+              <SvgXml key={idx} xml={star} width={20} height={20} />
             ))}
           </Rating>
           <SectionEnd>
@@ -97,12 +97,13 @@ export function RestaurantInfoCard({ restaurant = {} }) {
               </Text>
             )}
             {/* <View style={{ paddingLeft: 16 }} /> */}
-            <Spacer variant="left.large" />
             {/* <StyledSpacer isLarge /> */}
+            <Spacer position="left" size="large" />
             {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+
             {/* <StyledSpacer isLarge /> */}
-            <Spacer variant="left.large" />
             {/* <View style={{ paddingLeft: 16 }} /> */}
+            <Spacer position="left" size="large" />
             <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
           </SectionEnd>
         </Section>

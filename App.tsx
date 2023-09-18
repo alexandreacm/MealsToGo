@@ -14,21 +14,20 @@ import {
   Lato_400Regular,
   Lato_700Bold,
 } from "@expo-google-fonts/lato";
-import useLoadingFonts from "./src/hooks/useLoadingFonts";
+// import useLoadingFonts from "./src/hooks/useLoadingFonts";
 
 export default function App() {
-  const isLoaded = useLoadingFonts();
+  // const isLoaded = useLoadingFonts();
 
   const [isOswaldLoaded] = useOswald({
     Oswald_400Regular,
     Oswald_700Bold,
   });
+
   const [isLatoLoaded] = useLato({
     Lato_400Regular,
     Lato_700Bold,
   });
-
-  console.log(isLoaded);
 
   if (isOswaldLoaded && isLatoLoaded) {
     return (
