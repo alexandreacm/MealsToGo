@@ -1,6 +1,5 @@
 import * as React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { RestaurantsScreen } from "./src/screens/RestaurantsScreen";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/styles/theme";
 
@@ -15,6 +14,11 @@ import {
   Lato_700Bold,
 } from "@expo-google-fonts/lato";
 // import useLoadingFonts from "./src/hooks/useLoadingFonts";
+
+import { Navigation } from "./src/navigation";
+
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 export default function App() {
   // const isLoaded = useLoadingFonts();
@@ -33,7 +37,11 @@ export default function App() {
     return (
       <>
         <ThemeProvider theme={theme}>
-          <RestaurantsScreen />
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Navigation />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
         </ThemeProvider>
         <ExpoStatusBar style="auto" />
       </>
