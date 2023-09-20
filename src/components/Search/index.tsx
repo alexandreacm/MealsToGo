@@ -18,11 +18,10 @@ export const Search = () => {
         placeholder="Search for a location"
         value={searchKeyword}
         onSubmitEditing={() => {
+          // console.log(searchKeyword);
           search(searchKeyword);
         }}
-        onChangeText={(text) => {
-          setSearchKeyword(text);
-        }}
+        onChangeText={setSearchKeyword}
       />
     </SearchContainer>
   );

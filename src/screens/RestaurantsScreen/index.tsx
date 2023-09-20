@@ -3,13 +3,13 @@ import { FlatList, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { ActivityIndicator, Colors } from "react-native-paper";
 
-import { SafeArea } from "../../../components/utility/safe-area.component";
-import { Spacer } from "../../../components/spacer/spacer.component";
+import { SafeArea } from "../../utility/SafeArea";
+import { Spacer } from "../../components/Spacer";
 
-import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { RestaurantsContext } from "../../services/restaurants/restaurants.context";
 
-import { Search } from "../components/search.component";
-import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { Search } from "../../components/Search";
+import { RestaurantInfoCard } from "../../components/RestaurantInfoCard";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -29,26 +29,12 @@ const LoadingContainer = styled.View`
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
-  const [searchQuery, setSearchQuery] = React.useState("");
-
-  const mockData = {
-    name: "Some Restaurant",
-    icon: "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
-    photos: [
-      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
-    ],
-    address: "100 some random street",
-    isOpenNow: true,
-    rating: 4,
-    isClosedTemporarily: true,
-    placeId,
-  };
 
   return (
     <SafeArea>
       {isLoading && (
         <LoadingContainer>
-          <Loading size={50} animating={true} color={Colors.blue300} />
+          <Loading size={50} animating={true} color={Colors?.blue300} />
         </LoadingContainer>
       )}
       <Search />

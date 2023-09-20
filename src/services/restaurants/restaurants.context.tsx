@@ -32,6 +32,7 @@ export const RestaurantsContextProvider = ({ children }) => {
         });
     }, 2000);
   };
+
   useEffect(() => {
     if (location) {
       const locationString = `${location.lat},${location.lng}`;
@@ -40,15 +41,8 @@ export const RestaurantsContextProvider = ({ children }) => {
   }, [location]);
 
   return (
-    <RestaurantsContext.Provider
-      value= {{
-    restaurants,
-      isLoading,
-      error,
-      }
-}
-    >
-  { children }
-  < /RestaurantsContext.Provider>
+    <RestaurantsContext.Provider value={{ restaurants, isLoading, error }}>
+      {children}
+    </RestaurantsContext.Provider>
   );
 };
