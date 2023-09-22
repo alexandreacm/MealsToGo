@@ -28,11 +28,15 @@ const Map = () => (
 );
 
 const createScreenOptions = ({ route }) => {
-  const iconName = TAB_ICON[route.name];
+  // const iconName = TAB_ICON[route.name];
   return {
-    tabBarIcon: ({ size, color }) => (
-      <Ionicons name={iconName} size={size} color={color} />
-    ),
+    tabBarIcon: ({ focused, size, color }) => {
+      let iconName = focused
+        ? TAB_ICON[route.name]
+        : `${TAB_ICON[route.name]}-outline`;
+
+      return <Ionicons name={iconName} size={size} color={color} />;
+    },
   };
 };
 
