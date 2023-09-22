@@ -60,18 +60,3 @@ export const RestaurantsScreen = ({ navigation }) => {
     </SafeArea>
   );
 };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     marginTop: StatusBar.currentHeight,
-//   },
-//   search: {
-//     padding: 16,
-//   },
-//   list: {
-//     flex: 1,
-//     padding: 16,
-//     backgroundColor: "#e7e8ea",
-//   },
-// });

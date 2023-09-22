@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { Card } from "react-native-paper";
 
 export const Icon = styled.Image`
@@ -16,8 +16,10 @@ export const RestaurantCardCover = styled(Card.Cover)`
 `;
 
 export const Address = styled.Text`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
+  font-family: ${({ theme }) => theme.fonts.body};
+  ${({ theme }) => css`
+    font-size: ${theme.fontSizes.caption};
+  `}
 `;
 
 export const Info = styled.View`
