@@ -5,13 +5,24 @@ import { List } from "react-native-paper";
 import { RestaurantInfoCard } from "../../components/RestaurantInfoCard";
 import { SafeArea } from "../../utility/SafeArea";
 
-export const RestaurantDetailScreen = ({ route }) => {
+//const route = useRoute<RouteProp<ParamList, 'Detail'>>();
+
+type RouteParams = {
+  route: {
+    params: {
+      restaurant: {};
+    };
+  };
+};
+
+export const RestaurantDetailScreen = ({ route }: RouteParams) => {
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
   const [lunchExpanded, setLunchExpanded] = useState(false);
   const [dinnerExpanded, setDinnerExpanded] = useState(false);
   const [drinksExpanded, setDrinksExpanded] = useState(false);
 
   const { restaurant } = route.params;
+
   return (
     <SafeArea>
       <RestaurantInfoCard restaurant={restaurant} />
