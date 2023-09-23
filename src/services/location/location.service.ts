@@ -2,6 +2,12 @@ import camelize from "camelize";
 
 import { locations } from "./location.mock";
 
+// fetch(input: string, {
+//   method?: "GET" | "POST" | "PUT" | "DELETE",
+//   mode?: "navigate" | "same-origin" | "no-cors" | "cors",
+//   headers?: { [key: string ]: any }
+// }): Promise<Response>
+
 export const locationRequest = (searchTerm) => {
   return new Promise((resolve, reject) => {
     const locationMock = locations[searchTerm];
