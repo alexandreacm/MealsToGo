@@ -11,6 +11,7 @@ import { RestaurantsContext } from "../../services/restaurants/restaurants.conte
 import { Search } from "../../components/Search";
 import { RestaurantInfoCard } from "../../components/RestaurantInfoCard";
 import { FavoritesBar } from "../../components/FavoritesBar";
+import { useFavoriteContext } from "../../services/favorites/favorites.context";
 
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
@@ -30,6 +31,7 @@ const LoadingContainer = styled.View`
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const { favorites } = useFavoriteContext();
   const [isToggled, setIsToggled] = useState(false);
 
   return (
@@ -43,7 +45,9 @@ export const RestaurantsScreen = ({ navigation }) => {
         isFavoritesToggled={isToggled}
         onFavoritesToggle={() => setIsToggled(!isToggled)}
       />
-      {isToggled && <FavoritesBar />}
+      {isToggled && (
+        <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
+      )}
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
