@@ -17,7 +17,7 @@ const CompactWebview = styled(WebView)`
   height: 100px;
 `;
 
-const Item = styled.View`
+const ViewItem = styled.View`
   padding: 10px;
   max-width: 120px;
   align-items: center;
@@ -29,11 +29,11 @@ export const CompactRestaurantInfo = ({ restaurant }) => {
   const Image = isAndroid ? CompactWebview : CompactImage;
 
   return (
-    <Item>
+    <ViewItem>
       <Image source={{ uri: restaurant.photos[0] }} />
       <Text center variant="caption" numberOfLines={3}>
         {restaurant.name}
       </Text>
-    </Item>
+    </ViewItem>
   );
 };
