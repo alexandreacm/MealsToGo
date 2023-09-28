@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const FavoritesContext = createContext({});
 export const useFavoriteContext = () => useContext(FavoritesContext);
@@ -10,8 +11,29 @@ export const FavoritesContextProvider = ({
 }) => {
   const [favorites, setFavorites] = useState([]);
 
+  const saveFavorites = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem("@favourites", jsonValue);
+    } catch (e) {
+      console.log("error storing", e);
+    }
+  };
+
+  const loadFavorites = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@favourites");
+      if (value !== null) {
+        setFavorites(JSON.parse(value));
+      }
+    } catch (e) {
+      console.log("error loading", e);
+    }
+  };
+
   const add = (restaurant) => {
     setFavorites([...favorites, restaurant]);
+    // setFavorites(favorites);
   };
 
   const remove = (restaurant) => {
@@ -21,6 +43,14 @@ export const FavoritesContextProvider = ({
 
     setFavorites(newFavorites);
   };
+
+  useEffect(() => {
+    loadFavorites();
+  }, []);
+
+  useEffect(() => {
+    saveFavorites(favorites);
+  }, [favorites]);
 
   return (
     <FavoritesContext.Provider
