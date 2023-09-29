@@ -31,6 +31,8 @@ export const AuthenticationContextProvider = ({ children }) => {
       return;
     }
 
+    setIsLoading(true);
+
     createUserWithEmailAndPassword(email, password)
       .then((u) => {
         setUser(u);
