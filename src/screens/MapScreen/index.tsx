@@ -1,4 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useWindowDimensions } from "react-native";
+
 import MapView, { Marker, Callout } from "react-native-maps";
 import styled from "styled-components/native";
 
@@ -9,13 +11,14 @@ import { Search } from "./components/Search";
 import { MapCallout } from "../../components/MapCallout";
 
 const Map = styled(MapView)`
-  height: 100%;
-  width: 100%;
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
 `;
 
 export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants = [] } = useContext(RestaurantsContext);
+  const { width, height } = useWindowDimensions();
 
   const [latDelta, setLatDelta] = useState(0);
 
@@ -32,6 +35,8 @@ export const MapScreen = ({ navigation }) => {
     <>
       <Search />
       <Map
+        width={width}
+        height={height}
         region={{
           latitude: lat,
           longitude: lng,
