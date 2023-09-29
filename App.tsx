@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/styles/theme";
 import { initializeApp, getApps } from "firebase/app";
-import {
-  initializeAuth,
-  signInWithEmailAndPassword,
-  getReactNativePersistence,
-} from "firebase/auth";
-import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
+// import {
+//   initializeAuth,
+//   signInWithEmailAndPassword,
+//   getReactNativePersistence,
+// } from "firebase/auth";
+// import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
 import {
   useFonts as useOswald,
@@ -27,6 +27,7 @@ import { Navigation } from "./src/navigation";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -38,36 +39,18 @@ const firebaseConfig = {
   appId: "1:482795193523:web:12693f9c91d6557f1a9cc6",
 };
 
-let auth: any = null;
+// let auth: any = null;
 
 //firebase.apps.length
 if (!getApps().length) {
-  const app = initializeApp(firebaseConfig);
-  auth = initializeAuth(app, {
-    persistence: getReactNativePersistence(ReactNativeAsyncStorage),
-  });
+  initializeApp(firebaseConfig);
+  // auth = initializeAuth(app, {
+  //   persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+  // });
 }
 
 export default function App() {
   // const isLoaded = useLoadingFonts();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      signInWithEmailAndPassword(auth, "admin@gmail.com", "123123")
-        .then((response) => {
-          setIsAuthenticated(true);
-          console.log(response.user.emailVerified);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-        });
-    }, 2000);
-  }, []);
-
   const [isOswaldLoaded] = useOswald({
     Oswald_400Regular,
     Oswald_700Bold,
@@ -78,21 +61,19 @@ export default function App() {
     Lato_700Bold,
   });
 
-  if (!isAuthenticated) {
-    return null;
-  }
-
   if (isOswaldLoaded && isLatoLoaded) {
     return (
       <>
         <ThemeProvider theme={theme}>
-          <FavoritesContextProvider>
-            <LocationContextProvider>
-              <RestaurantsContextProvider>
-                <Navigation />
-              </RestaurantsContextProvider>
-            </LocationContextProvider>
-          </FavoritesContextProvider>
+          <AuthenticationContextProvider>
+            <FavoritesContextProvider>
+              <LocationContextProvider>
+                <RestaurantsContextProvider>
+                  <Navigation />
+                </RestaurantsContextProvider>
+              </LocationContextProvider>
+            </FavoritesContextProvider>
+          </AuthenticationContextProvider>
         </ThemeProvider>
         <ExpoStatusBar style="auto" />
       </>
