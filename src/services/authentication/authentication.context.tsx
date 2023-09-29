@@ -21,13 +21,14 @@ export const AuthenticationContextProvider = ({ children }) => {
         // const errorCode = e.code;
         // const eMessage = e.message;
         setIsLoading(false);
-        setError(e);
+        setError(e.toString());
       });
   };
 
   return (
     <AuthenticationContext.Provider
       value={{
+        isAuthenticated: !!user,
         user,
         isLoading,
         error,
