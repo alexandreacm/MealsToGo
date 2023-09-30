@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 import { loginRequest } from "./authentication.service";
@@ -43,7 +44,6 @@ export const AuthenticationContextProvider = ({ children }) => {
   };
 
   const onRegister = (email, password, repeatedPassword) => {
-    const auth = getAuth();
     setIsLoading(true);
 
     if (password !== repeatedPassword) {
@@ -64,7 +64,7 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   const onLogout = () => {
     setUser(null);
-    firebase.auth().signOut();
+    signOut(auth);
   };
 
   return (
