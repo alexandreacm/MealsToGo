@@ -1,5 +1,6 @@
 import React, { useState, createContext } from "react";
 import {
+  Auth,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
@@ -63,8 +64,10 @@ export const AuthenticationContextProvider = ({ children }) => {
   };
 
   const onLogout = () => {
-    setUser(null);
-    signOut(auth);
+    auth.signOut().then(() => {
+      setUser(null);
+      setError(null);
+    });
   };
 
   return (
