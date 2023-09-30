@@ -3,12 +3,8 @@ import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/styles/theme";
 import { initializeApp, getApps } from "firebase/app";
-// import {
-//   initializeAuth,
-//   signInWithEmailAndPassword,
-//   getReactNativePersistence,
-// } from "firebase/auth";
-// import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
+import { initializeAuth, getReactNativePersistence } from "firebase/auth";
+import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
 import {
   useFonts as useOswald,
@@ -39,14 +35,11 @@ const firebaseConfig = {
   appId: "1:482795193523:web:12693f9c91d6557f1a9cc6",
 };
 
-// let auth: any = null;
-
-//firebase.apps.length
 if (!getApps().length) {
-  initializeApp(firebaseConfig);
-  // auth = initializeAuth(app, {
-  //   persistence: getReactNativePersistence(ReactNativeAsyncStorage),
-  // });
+  const app = initializeApp(firebaseConfig);
+  initializeAuth(app, {
+    persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+  });
 }
 
 export default function App() {
