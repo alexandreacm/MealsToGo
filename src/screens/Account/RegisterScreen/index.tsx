@@ -7,13 +7,12 @@ import {
   AuthButton,
   AuthInput,
   ErrorContainer,
-  Title, } from "../styles";
-  
-  
-  import { Text } from "../../../components/TypoGraphy";
-  import { Spacer } from "../../../components//Spacer";
-  import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+  Title,
+} from "../styles";
 
+import { Text } from "../../../components/TypoGraphy";
+import { Spacer } from "../../../components//Spacer";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -67,9 +66,10 @@ export const RegisterScreen = ({ navigation }) => {
               onPress={() => onRegister(email, password, repeatedPassword)}
             >
               Register
-            </AuthButton>) : (
-              <ActivityIndicator animating={true} color={Colors.blue300} />
-            )}
+            </AuthButton>
+          ) : (
+            <ActivityIndicator animating={true} color={Colors.blue300} />
+          )}
         </Spacer>
       </AccountContainer>
       <Spacer size="large">
@@ -79,5 +79,4 @@ export const RegisterScreen = ({ navigation }) => {
       </Spacer>
     </AccountBackground>
   );
-};
 };
