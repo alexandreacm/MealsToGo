@@ -51,5 +51,5 @@ export const AnimationWrapper = styled.View`
   height: 40%;
   position: absolute;
   top: 30px;
-  padding: ${(props) => props.theme.space[2]};
+  padding: ${({ theme }) => theme.space[2]};
 `;

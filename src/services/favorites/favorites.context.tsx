@@ -35,7 +35,6 @@ export const FavoritesContextProvider = ({
 
   const add = (restaurant) => {
     setFavorites([...favorites, restaurant]);
-    // setFavorites(favorites);
   };
 
   const remove = (restaurant) => {
