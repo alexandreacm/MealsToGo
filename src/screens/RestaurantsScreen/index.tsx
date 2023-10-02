@@ -13,6 +13,7 @@ import { RestaurantInfoCard } from "../../components/RestaurantInfoCard";
 import { FavoritesBar } from "../../components/FavoritesBar";
 import { useFavoriteContext } from "../../services/favorites/favorites.context";
 import { RestaurantList } from "./styles";
+import { FadeInView } from "../../components/animations/fade.animation";
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -40,9 +41,11 @@ export const RestaurantsScreen = ({ navigation }) => {
         isFavoritesToggled={isToggled}
         onFavoritesToggle={() => setIsToggled(!isToggled)}
       />
+
       {isToggled && (
         <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
       )}
+
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
@@ -55,7 +58,9 @@ export const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
+                <FadeInView>
+                  <RestaurantInfoCard restaurant={item} />
+                </FadeInView>
               </Spacer>
             </TouchableOpacity>
           );
