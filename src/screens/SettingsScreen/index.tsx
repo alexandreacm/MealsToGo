@@ -10,18 +10,21 @@ import { AuthenticationContext } from "../../services/authentication/authenticat
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
 `;
+
 const AvatarContainer = styled.View`
   align-items: center;
 `;
+
+const AvatarIcon = styled(Avatar.Icon)``;
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   return (
     <SafeArea>
       <AvatarContainer>
-        <Avatar.Icon size={180} icon="human" backgroundColor="#2182BD" />
+        <AvatarIcon size={180} icon="human" backgroundColor="#2182BD" />
         <Spacer position="top" size="large">
-          <Text variant="label">{user.email}</Text>
+          <Text variant="label">{user?.email}</Text>
         </Spacer>
       </AvatarContainer>
 
@@ -31,7 +34,7 @@ export const SettingsScreen = ({ navigation }) => {
           title="Favourites"
           description="View your favourites"
           left={(props) => <List.Icon {...props} color="black" icon="heart" />}
-          onPress={() => navigation.navigate("Favourites")}
+          onPress={() => navigation.navigate("Favorites")}
         />
         <SettingsItem
           style={{ padding: 16 }}
