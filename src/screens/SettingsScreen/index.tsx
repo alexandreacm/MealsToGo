@@ -6,6 +6,7 @@ import { Text } from "../../components/TypoGraphy";
 import { Spacer } from "../../components/Spacer/";
 import { SafeArea } from "../../utility/SafeArea";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
+import { useTheme } from "styled-components";
 
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
@@ -19,10 +20,16 @@ const AvatarIcon = styled(Avatar.Icon)``;
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
+  const { colors } = useTheme();
+
   return (
     <SafeArea>
       <AvatarContainer>
-        <AvatarIcon size={180} icon="human" backgroundColor="#2182BD" />
+        <AvatarIcon
+          size={180}
+          icon="human"
+          backgroundColor={colors.brand.primary}
+        />
         <Spacer position="top" size="large">
           <Text variant="label">{user?.email}</Text>
         </Spacer>
