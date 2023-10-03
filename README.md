@@ -30,7 +30,7 @@ To styling issues, we use styled-components as the main library.
 ## Features
 
 - [ ] Authentication;
-- [ ] Create User;
+- [ ] Register User;
 - [ ] Favorite Restaurants;
 - [ ] Detail Restaurant;
 - [ ] View Restaurants on the map;
@@ -71,20 +71,19 @@ yarn jest or yarn test
 ```bash
 ├── assets
 │   └── fonts
-|   └── icons
-|   └── images
+│   └── icons
+│   └── images
 ├── components
-├── helpers
 ├── hooks
-├── routes
+├── navigation
 ├── screens
-├── store
-|   └── sagas
-|   └── slices
-├── theme
-|   └── colors
-|   └── fonts
-|   └── spacings
+├── services
+├── styles
+    └── theme
+        └── colors
+        └── fonts
+        └── spacings
+        └── sizes
 ```
 
 <div align="center">
