@@ -8,6 +8,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "publish-app": "expo publish",
     "lint": "eslint . --ext .jsx,.tsx,.ts"
   },
   "dependencies": {
