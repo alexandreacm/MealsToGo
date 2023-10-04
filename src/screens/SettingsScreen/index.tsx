@@ -28,7 +28,7 @@ export const SettingsScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <AvatarContainer>
-        <TouchableCamera onPress={navigation.navigate("Camera")}>
+        <TouchableCamera onPress={() => navigation.navigate("Camera")}>
           <AvatarIcon
             size={180}
             icon="human"
