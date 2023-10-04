@@ -21,6 +21,7 @@
     "@react-navigation/stack": "^5.12.8",
     "camelize": "^1.0.1",
     "expo": "~49.0.8",
+    "expo-camera": "~13.4.4",
     "expo-font": "~11.4.0",
     "expo-status-bar": "~1.6.0",
     "expo-updates": "~0.18.14",
