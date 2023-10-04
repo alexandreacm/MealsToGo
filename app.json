@@ -15,13 +15,26 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.alexandreacm.MealsToGo"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.alexandreacm.MealsToGo"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c3b35966-c5f2-4945-9744-653324c2331b"
       }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/c3b35966-c5f2-4945-9744-653324c2331b"
     }
   }
 }
