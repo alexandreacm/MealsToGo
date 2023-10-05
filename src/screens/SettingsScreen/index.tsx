@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { List, Avatar } from "react-native-paper";
@@ -8,6 +8,8 @@ import { Spacer } from "../../components/Spacer/";
 import { SafeArea } from "../../utility/SafeArea";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 import { useTheme } from "styled-components";
+import { useFocusEffect } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
@@ -18,22 +20,44 @@ const AvatarContainer = styled.View`
 `;
 
 const AvatarIcon = styled(Avatar.Icon)``;
+const AvatarImage = styled(Avatar.Image)``;
 
 const TouchableCamera = styled(TouchableOpacity)``;
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   const { colors } = useTheme();
+  const [photo, setPhoto] = useState(null);
+
+  const getProfilePicture = async (currentUser) => {
+    const photoUri = await AsyncStorage.getItem(`${currentUser.uid}-photo`);
+    setPhoto(photoUri);
+  };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getProfilePicture(user);
+    }, [user]),
+  );
 
   return (
     <SafeArea>
       <AvatarContainer>
         <TouchableCamera onPress={() => navigation.navigate("Camera")}>
-          <AvatarIcon
-            size={180}
-            icon="human"
-            backgroundColor={colors.brand.primary}
-          />
+          {!photo && (
+            <AvatarIcon
+              size={180}
+              icon="human"
+              backgroundColor={colors.brand.primary}
+            />
+          )}
+          {photo && (
+            <AvatarImage
+              size={180}
+              source={{ uri: photo }}
+              backgroundColor={colors.brand.primary}
+            />
+          )}
         </TouchableCamera>
         <Spacer position="top" size="large">
           <Text variant="label">{user?.email}</Text>

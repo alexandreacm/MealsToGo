@@ -1,9 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { View, Button } from "react-native";
 import styled from "styled-components/native";
 import { Camera, CameraType } from "expo-camera";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Text } from "../../components/TypoGraphy";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 const ProfileCamera = styled(Camera)`
   width: 100%;
@@ -18,10 +20,11 @@ const StyledView = styled.View`
 
 const TakePicture = styled(TouchableOpacity)``;
 
-export const CameraScreen = () => {
+export const CameraScreen = ({ navigation }) => {
   const [type] = useState(CameraType.front);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const cameraRef = useRef(null);
+  const { user } = useContext(AuthenticationContext);
 
   // const [hasPermission, setHasPermission] = useState(false);
 
@@ -36,7 +39,9 @@ export const CameraScreen = () => {
     if (cameraRef) {
       const myRef = cameraRef.current as any;
       const photo = await myRef.takePictureAsync();
-      console.log(photo);
+
+      await AsyncStorage.setItem(`${user.uid}-photo`, photo.uri);
+      navigation.goBack();
     }
   };
 
