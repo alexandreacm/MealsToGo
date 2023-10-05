@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { View, Button } from "react-native";
 import styled from "styled-components/native";
 import { Camera, CameraType } from "expo-camera";
 import { Text } from "../../components/TypoGraphy";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const ProfileCamera = styled(Camera)`
   width: 100%;
@@ -15,16 +16,29 @@ const StyledView = styled.View`
   align-items: center;
 `;
 
+const TakePicture = styled(TouchableOpacity)``;
+
 export const CameraScreen = () => {
   const [type] = useState(CameraType.front);
   const [permission, requestPermission] = Camera.useCameraPermissions();
+  const cameraRef = useRef(null);
+
+  // const [hasPermission, setHasPermission] = useState(false);
 
   // useEffect(() => {
   //   (async () => {
-  //     const { status } = await requestPermission();
+  //     const { granted } = await Camera.requestCameraPermissionsAsync();
+  //     setHasPermission(granted);
   //   })();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, []);
+
+  const onTakePicture = async () => {
+    if (cameraRef) {
+      const myRef = cameraRef.current as any;
+      const photo = await myRef.takePictureAsync();
+      console.log(photo);
+    }
+  };
 
   if (!permission) {
     return <View />;
@@ -39,5 +53,12 @@ export const CameraScreen = () => {
     );
   }
 
-  return <ProfileCamera type={type} />;
+  return (
+    <TakePicture onPress={onTakePicture}>
+      <ProfileCamera
+        ref={(camera) => (cameraRef.current = camera)}
+        type={type}
+      />
+    </TakePicture>
+  );
 };
