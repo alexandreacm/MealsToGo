@@ -1,15 +1,14 @@
 import React, { useContext, useState } from "react";
 import { TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
+import styled, { useTheme } from "styled-components/native";
 import { List, Avatar } from "react-native-paper";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
 
 import { Text } from "../../components/TypoGraphy";
 import { Spacer } from "../../components/Spacer/";
 import { SafeArea } from "../../utility/SafeArea";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
-import { useTheme } from "styled-components";
-import { useFocusEffect } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const TransparentSafeArea = styled(SafeArea)`
   background-color: transparent;
@@ -78,18 +77,39 @@ export const SettingsScreen = ({ navigation }) => {
 
         <List.Section>
           <SettingsItem
-            style={{ padding: 16 }}
-            title="Favourites"
-            description="View your favourites"
+            title="Favorites"
+            description="View your favorites"
             left={(props) => (
-              <List.Icon {...props} color="black" icon="heart" />
+              <List.Icon {...props} color={colors.ui.error} icon="heart" />
             )}
             onPress={() => navigation.navigate("Favorites")}
           />
+          <Spacer />
           <SettingsItem
-            style={{ padding: 16 }}
+            title="Payment"
+            left={(props) => (
+              <List.Icon {...props} color={colors.ui.secondary} icon="cart" />
+            )}
+            onPress={() => null}
+          />
+          <Spacer />
+          <SettingsItem
+            title="Past Orders"
+            left={(props) => (
+              <List.Icon
+                {...props}
+                color={colors.ui.secondary}
+                icon="history"
+              />
+            )}
+            onPress={() => null}
+          />
+          <Spacer />
+          <SettingsItem
             title="Logout"
-            left={(props) => <List.Icon {...props} color="black" icon="door" />}
+            left={(props) => (
+              <List.Icon {...props} color={colors.ui.secondary} icon="door" />
+            )}
             onPress={onLogout}
           />
         </List.Section>
