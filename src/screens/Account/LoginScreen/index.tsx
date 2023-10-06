@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { ActivityIndicator, MD2Colors } from "react-native-paper";
+import { TextInput, ActivityIndicator, MD2Colors } from "react-native-paper";
 import {
   AccountBackground,
   AccountCover,
@@ -39,6 +39,7 @@ export const LoginScreen = ({ navigation }) => {
             textContentType="password"
             secureTextEntry
             autoCapitalize="none"
+            right={<TextInput.Affix text="/100" />}
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
