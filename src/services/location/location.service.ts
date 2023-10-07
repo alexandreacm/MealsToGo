@@ -18,11 +18,9 @@ import { host } from "../../utils/env";
 // };
 
 export const locationRequest = (searchTerm: string) => {
-  return fetch(`https://geocode-${host}/geocode?city=${searchTerm}`).then(
-    (res) => {
-      return res.json();
-    },
-  );
+  return fetch(`${host}/geocode?city=${searchTerm}`).then((res) => {
+    return res.json();
+  });
 };
 
 export const locationTransform = (result) => {
