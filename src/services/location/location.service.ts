@@ -1,6 +1,5 @@
 import camelize from "camelize";
-
-import { locations } from "../../../functions/geocode/geocode.mock";
+import { host } from "../../utils/env";
 
 // fetch(input: string, {
 //   method?: "GET" | "POST" | "PUT" | "DELETE",
@@ -19,11 +18,11 @@ import { locations } from "../../../functions/geocode/geocode.mock";
 // };
 
 export const locationRequest = (searchTerm: string) => {
-  return fetch(
-    `http://127.0.0.1:5001/mealstogo-92344/us-central1/geocode?city=${searchTerm}`,
-  ).then((res) => {
-    return res.json();
-  });
+  return fetch(`https://geocode-${host}/geocode?city=${searchTerm}`).then(
+    (res) => {
+      return res.json();
+    },
+  );
 };
 
 export const locationTransform = (result) => {

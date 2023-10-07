@@ -1,4 +1,5 @@
 import camelize from "camelize";
+import { host } from "../../utils/env";
 // import { mocks, mockImages } from "../../../functions/places/mock";
 
 // export const restaurantsRequest = (location) => {
@@ -13,7 +14,7 @@ import camelize from "camelize";
 
 export const restaurantsRequest = (location) => {
   return fetch(
-    `http://localhost:5001/mealstogo-92344/us-central1/placesNearby?location=${location}`,
+    `https://placesnearby-${host}/placesNearby?location=${location}`,
   ).then((res) => {
     return res.json();
   });
