@@ -3,7 +3,7 @@ import { ScrollView } from "react-native";
 import { List, Divider } from "react-native-paper";
 
 import { RestaurantInfoCard } from "../../components/RestaurantInfoCard";
-import { SafeArea } from "../../utility/SafeArea";
+import { SafeArea } from "../../components/utility/SafeArea";
 
 //const route = useRoute<RouteProp<ParamList, 'Detail'>>();
 

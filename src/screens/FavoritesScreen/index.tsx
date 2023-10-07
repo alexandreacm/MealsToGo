@@ -3,7 +3,7 @@ import { TouchableOpacity } from "react-native";
 
 import { FavoritesContext } from "../../services/favorites/favorites.context";
 
-import { SafeArea } from "../../utility/SafeArea";
+import { SafeArea } from "../../components/utility/SafeArea";
 import { Text } from "../../components/TypoGraphy";
 import { Spacer } from "../../components/Spacer";
 import { styled } from "styled-components/native";

@@ -7,7 +7,7 @@ import { useFocusEffect } from "@react-navigation/native";
 
 import { Text } from "../../components/TypoGraphy";
 import { Spacer } from "../../components/Spacer/";
-import { SafeArea } from "../../utility/SafeArea";
+import { SafeArea } from "../../components/utility/SafeArea";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 const TransparentSafeArea = styled(SafeArea)`

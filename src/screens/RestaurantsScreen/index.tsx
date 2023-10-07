@@ -3,7 +3,7 @@ import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { ActivityIndicator, MD2Colors } from "react-native-paper";
 
-import { SafeArea } from "../../utility/SafeArea";
+import { SafeArea } from "../../components/utility/SafeArea";
 import { Spacer } from "../../components/Spacer";
 
 import { RestaurantsContext } from "../../services/restaurants/restaurants.context";
