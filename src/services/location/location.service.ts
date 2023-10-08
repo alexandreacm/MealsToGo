@@ -1,5 +1,5 @@
 import camelize from "camelize";
-import { host } from "../../utils/env";
+import { host, isMock } from "../../utils/env";
 
 // fetch(input: string, {
 //   method?: "GET" | "POST" | "PUT" | "DELETE",
@@ -18,9 +18,11 @@ import { host } from "../../utils/env";
 // };
 
 export const locationRequest = (searchTerm: string) => {
-  return fetch(`${host}/geocode?city=${searchTerm}`).then((res) => {
-    return res.json();
-  });
+  return fetch(`${host}/geocode?city=${searchTerm}&mock=${isMock}`).then(
+    (res) => {
+      return res.json();
+    },
+  );
 };
 
 export const locationTransform = (result) => {
