@@ -27,13 +27,16 @@ const LoadingContainer = styled.View`
 `;
 
 export const RestaurantsScreen = ({ navigation }) => {
-  const { isLoading, restaurants } = useContext(RestaurantsContext);
+  const {
+    isLoading,
+    restaurants,
+    error: restaurantError,
+  } = useContext(RestaurantsContext);
   const { error: locationError } = useContext(LocationContext);
-  const { isLoading, restaurants, error } = useContext(RestaurantsContext);
   const { favorites } = useFavoriteContext();
   const [isToggled, setIsToggled] = useState(false);
 
-  const hasError = !!error || !!locationError;
+  const hasError = !!restaurantError || !!locationError;
 
   return (
     <SafeArea>
@@ -42,6 +45,7 @@ export const RestaurantsScreen = ({ navigation }) => {
           <Loading size={50} animating={true} color={MD2Colors.blue300} />
         </LoadingContainer>
       )}
+
       <Search
         isFavoritesToggled={isToggled}
         onFavoritesToggle={() => setIsToggled(!isToggled)}
