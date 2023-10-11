@@ -96,6 +96,7 @@ export const RestaurantDetailScreen = ({ navigation, route }: RouteParams) => {
           mode="contained"
           onPress={() => {
             addToCart({ item: "special", price: 1299 }, restaurant);
+            navigation.navigate("Checkout");
           }}
         >
           Order Special Only 12.99!
