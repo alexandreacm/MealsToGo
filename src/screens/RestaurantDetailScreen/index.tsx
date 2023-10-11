@@ -92,7 +92,7 @@ export const RestaurantDetailScreen = ({ navigation, route }: RouteParams) => {
       </ScrollView>
       <Spacer position="bottom" size="large">
         <OrderButton
-          icon="cash-usd"
+          icon="cash"
           mode="contained"
           onPress={() => {
             addToCart({ item: "special", price: 1299 }, restaurant);

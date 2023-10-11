@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
-import { Text } from "react-native";
+
+import { Text } from "../../components/TypoGraphy";
+import { Spacer } from "../../components/Spacer";
 
 import { SafeArea } from "../../components/utility/SafeArea";
 import { CreditCardInput } from "./components/CreditCardInput";
@@ -22,7 +24,7 @@ export const CheckoutScreen = () => {
 
   return (
     <SafeArea>
-      <Text>{JSON.stringify(cart)}</Text>
+      {/* <Text>{JSON.stringify(cart)}</Text> */}
       <Text>restaurant: {JSON.stringify(restaurant)}</Text>
       <CreditCardInput />
     </SafeArea>
