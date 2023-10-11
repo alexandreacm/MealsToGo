@@ -36,6 +36,7 @@ export const RestaurantsScreen = ({ navigation }) => {
   const { favorites } = useFavoriteContext();
   const [isToggled, setIsToggled] = useState(false);
 
+  //cast to boolean
   const hasError = !!restaurantError || !!locationError;
 
   return (
@@ -60,6 +61,7 @@ export const RestaurantsScreen = ({ navigation }) => {
           <Text variant="error">Something went wrong retrieving the data</Text>
         </Spacer>
       )}
+
       {!hasError && (
         <RestaurantList
           data={restaurants}
