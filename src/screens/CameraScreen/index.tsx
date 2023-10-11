@@ -1,10 +1,9 @@
 import React, { useState, useRef, useContext } from "react";
-import { View, Button } from "react-native";
+import { View, Button, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { Camera, CameraType } from "expo-camera";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Text } from "../../components/TypoGraphy";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import { AuthenticationContext } from "../../services/authentication/authentication.context";
 
 const ProfileCamera = styled(Camera)`
