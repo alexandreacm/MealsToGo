@@ -9,11 +9,12 @@ import { SafeArea } from "../../components/utility/SafeArea";
 import { CartContext } from "../../services/cart/cart.context";
 import { CreditCardInput } from "./components/CreditCardInput";
 
-import { CartIcon, CartIconContainer } from "./styles";
+import { CartIcon, CartIconContainer, NameInput } from "./styles";
 import { RestaurantInfoCard } from "../../components/RestaurantInfoCard";
 
 export const CheckoutScreen = () => {
   const { cart, restaurant, sum } = useContext(CartContext);
+  const [name, setName] = useState("");
 
   if (!cart.length || !restaurant) {
     return (
@@ -41,7 +42,9 @@ export const CheckoutScreen = () => {
           </List.Section>
           <Text>Total: {sum / 100}</Text>
         </Spacer>
-        <CreditCardInput />
+        <NameInput label="Name" value={name} onChangeText={setName} />
+
+        {name.length > 0 && <CreditCardInput name={name} />}
       </ScrollView>
     </SafeArea>
   );
