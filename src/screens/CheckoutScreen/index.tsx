@@ -9,11 +9,17 @@ import { SafeArea } from "../../components/utility/SafeArea";
 import { CartContext } from "../../services/cart/cart.context";
 import { CreditCardInput } from "./components/CreditCardInput";
 
-import { CartIcon, CartIconContainer, NameInput } from "./styles";
+import {
+  CartIcon,
+  CartIconContainer,
+  NameInput,
+  PayButton,
+  ClearButton,
+} from "./styles";
 import { RestaurantInfoCard } from "../../components/RestaurantInfoCard";
 
 export const CheckoutScreen = () => {
-  const { cart, restaurant, sum } = useContext(CartContext);
+  const { cart, restaurant, clearCart, sum } = useContext(CartContext);
   const [name, setName] = useState("");
 
   if (!cart.length || !restaurant) {
@@ -44,7 +50,25 @@ export const CheckoutScreen = () => {
         </Spacer>
         <NameInput label="Name" value={name} onChangeText={setName} />
 
-        {name.length > 0 && <CreditCardInput name={name} />}
+        <Spacer position="top" size="large">
+          {name.length > 0 && <CreditCardInput name={name} />}
+        </Spacer>
+        <Spacer position="top" size="xxl" />
+
+        <PayButton
+          icon="cash"
+          mode="contained"
+          onPress={() => {
+            console.log("pay now");
+          }}
+        >
+          Pay
+        </PayButton>
+        <Spacer position="top" size="large">
+          <ClearButton icon="cart-off" mode="contained" onPress={clearCart}>
+            Clear Cart
+          </ClearButton>
+        </Spacer>
       </ScrollView>
     </SafeArea>
   );
