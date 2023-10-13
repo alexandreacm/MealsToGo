@@ -33,11 +33,8 @@ export const AuthenticationContextProvider = ({ children }) => {
         setIsLoading(false);
       })
       .catch((e) => {
-        const errorCode = e.code;
+        // const errorCode = e.code;
         // const eMessage = e.message;
-
-        console.log(errorCode);
-
         setIsLoading(false);
         setError(e.toString());
       });

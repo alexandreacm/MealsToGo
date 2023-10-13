@@ -7,6 +7,7 @@ import { SafeArea } from "../../components/utility/SafeArea";
 import { CartContext } from "../../services/cart/cart.context";
 import { Spacer } from "../../components/Spacer";
 import { OrderButton } from "../RestaurantsScreen/styles";
+import { useNavigation } from "@react-navigation/native";
 
 //const route = useRoute<RouteProp<ParamList, 'Detail'>>();
 
@@ -18,11 +19,12 @@ type RouteParams = {
   };
 };
 
-export const RestaurantDetailScreen = ({ navigation, route }: RouteParams) => {
+export const RestaurantDetailScreen = ({ route }: RouteParams) => {
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
   const [lunchExpanded, setLunchExpanded] = useState(false);
   const [dinnerExpanded, setDinnerExpanded] = useState(false);
   const [drinksExpanded, setDrinksExpanded] = useState(false);
+  const { navigate } = useNavigation();
 
   const { restaurant } = route.params;
   const { addToCart } = useContext(CartContext);
@@ -96,7 +98,7 @@ export const RestaurantDetailScreen = ({ navigation, route }: RouteParams) => {
           mode="contained"
           onPress={() => {
             addToCart({ item: "special", price: 1299 }, restaurant);
-            navigation.navigate("Checkout");
+            navigate("Checkout");
           }}
         >
           Order Special Only 12.99!

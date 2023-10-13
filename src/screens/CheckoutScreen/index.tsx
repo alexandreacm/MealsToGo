@@ -17,10 +17,19 @@ import {
   ClearButton,
 } from "./styles";
 import { RestaurantInfoCard } from "../../components/RestaurantInfoCard";
+import { payRequest } from "../../services/checkout/checkout.service";
 
 export const CheckoutScreen = () => {
   const { cart, restaurant, clearCart, sum } = useContext(CartContext);
   const [name, setName] = useState("");
+
+  const onPay = () => {
+    payRequest("123", 1299, "Alexandre Marques");
+  };
+
+  useEffect(() => {
+    onPay();
+  }, []);
 
   if (!cart.length || !restaurant) {
     return (
@@ -48,6 +57,7 @@ export const CheckoutScreen = () => {
           </List.Section>
           <Text>Total: {sum / 100}</Text>
         </Spacer>
+
         <NameInput label="Name" value={name} onChangeText={setName} />
 
         <Spacer position="top" size="large">
