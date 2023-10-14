@@ -25,6 +25,7 @@ export const CreditCardInput = ({ name, onSuccess }) => {
 
     if (!isIncomplete) {
       const info = await cardTokenRequest(information);
+      console.log(info.id);
       onSuccess(info);
     }
   };

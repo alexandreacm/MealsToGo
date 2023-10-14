@@ -4,6 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { AuthenticationContext } from "../authentication/authentication.context";
 
 export const CartContext = createContext({});
+export const useCartContext = () => useContext(CartContext);
 
 export const CartContextProvider = ({ children }) => {
   const { user } = useContext(AuthenticationContext);
@@ -38,6 +39,7 @@ export const CartContextProvider = ({ children }) => {
   const clear = () => {
     setCart([]);
     setRestaurant(null);
+    setSum(0);
   };
 
   return (

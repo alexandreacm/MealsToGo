@@ -15,6 +15,7 @@ import {
   NameInput,
   PayButton,
   ClearButton,
+  PaymentProcessing,
 } from "./styles";
 import { RestaurantInfoCard } from "../../components/RestaurantInfoCard";
 import { payRequest } from "../../services/checkout/checkout.service";
@@ -23,13 +24,25 @@ export const CheckoutScreen = () => {
   const { cart, restaurant, clearCart, sum } = useContext(CartContext);
   const [name, setName] = useState("");
   const [card, setCard] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onPay = () => {
+    setIsLoading(true);
+
     if (!card || !card.id) {
+      setIsLoading(false);
       console.log("some error");
       return;
     }
-    payRequest(card.id, sum, name);
+
+    payRequest(card.id, sum, name)
+      .then((result) => {
+        setIsLoading(false);
+      })
+      // eslint-disable-next-line handle-callback-err
+      .catch((err) => {
+        setIsLoading(false);
+      });
   };
 
   if (!cart.length || !restaurant) {
@@ -46,6 +59,7 @@ export const CheckoutScreen = () => {
   return (
     <SafeArea>
       <RestaurantInfoCard restaurant={restaurant} />
+      {isLoading && <PaymentProcessing />}
       <ScrollView>
         <Spacer position="left" size="medium">
           <Spacer position="top" size="large">
@@ -68,11 +82,21 @@ export const CheckoutScreen = () => {
         </Spacer>
         <Spacer position="top" size="xxl" />
 
-        <PayButton icon="cash" mode="contained" onPress={onPay}>
+        <PayButton
+          disabled={isLoading}
+          icon="cash"
+          mode="contained"
+          onPress={onPay}
+        >
           Pay
         </PayButton>
         <Spacer position="top" size="large">
-          <ClearButton icon="cart-off" mode="contained" onPress={clearCart}>
+          <ClearButton
+            disabled={isLoading}
+            icon="cart-off"
+            mode="contained"
+            onPress={clearCart}
+          >
             Clear Cart
           </ClearButton>
         </Spacer>
