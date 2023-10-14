@@ -10,7 +10,7 @@ import { RestaurantsContextProvider } from "../services/restaurants/restaurants.
 import { CartContextProvider } from "../services/cart/cart.context";
 import { SettingsNavigator } from "./settings-navigator";
 import { colors } from "../styles/theme/colors";
-import { CheckoutScreen } from "../screens/CheckoutScreen";
+import { CheckoutNavigator } from "./checkout.navigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,7 +47,7 @@ export const AppNavigator = () => (
             }}
           >
             <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-            <Tab.Screen name="Checkout" component={CheckoutScreen} />
+            <Tab.Screen name="Checkout" component={CheckoutNavigator} />
             <Tab.Screen name="Map" component={MapScreen} />
             <Tab.Screen name="Settings" component={SettingsNavigator} />
           </Tab.Navigator>
