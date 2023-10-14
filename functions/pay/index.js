@@ -1,8 +1,7 @@
 module.exports.payRequest = (request, response, stripeClient) => {
   // const body = JSON.parse(request.body);
-  const { token, amount } = request.body;
-  console.log(token, amount);
 
+  const { token, amount } = JSON.parse(request.body);
   stripeClient.paymentIntents
     .create({
       amount,

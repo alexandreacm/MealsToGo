@@ -8,15 +8,15 @@ export const cardTokenRequest = (informationCard) =>
 
 export const payRequest = (token, amount, name) => {
   return fetch(`${host}/pay`, {
-    method: "POST",
     body: JSON.stringify({
       token,
-      amount,
       name,
+      amount,
     }),
+    method: "POST",
   }).then((res) => {
     if (res.status > 200) {
-      return Promise.reject("Something went wrong processing the payment");
+      return Promise.reject("something went wrong processing your payment");
     }
     return res.json();
   });
