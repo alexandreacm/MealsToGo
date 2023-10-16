@@ -19,14 +19,14 @@
       "bundleIdentifier": "com.alexandreacm.MealsToGo",
         "config":{
         "googleMapsApiKey":{
-          "apiKey":"AIzaSyDIhu6C53UmtSEt1krLcV_OK9kHMjWzM7A"
+          "apiKey":""
         }
       }
     },
     "android": {
       "config":{
         "googleMaps":{
-          "apiKey":"AIzaSyDIhu6C53UmtSEt1krLcV_OK9kHMjWzM7A"
+          "apiKey":""
         }
       },
       "adaptiveIcon": {
