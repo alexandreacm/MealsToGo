@@ -17,18 +17,8 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.alexandreacm.MealsToGo",
-        "config":{
-        "googleMapsApiKey":{
-          "apiKey":""
-        }
-      }
     },
     "android": {
-      "config":{
-        "googleMaps":{
-          "apiKey":""
-        }
-      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"

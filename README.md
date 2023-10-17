@@ -8,6 +8,8 @@
 
 ![cover](.github/cover.png?style=flat)
 
+![cover](.github/meals-to-go-architecture.png.png?style=flat)
+
 ## 💻 Project
 
 An example of application to meals to go.

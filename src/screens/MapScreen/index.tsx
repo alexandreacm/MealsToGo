@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useWindowDimensions } from "react-native";
 
-import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
+import MapView, { Marker, Callout } from "react-native-maps";
 import styled from "styled-components/native";
 
 import { LocationContext } from "../../services/location/location.context";
@@ -35,7 +35,6 @@ const RestaurantMap = ({ navigation }) => {
     <>
       <Search />
       <Map
-        provider={PROVIDER_GOOGLE}
         width={width}
         height={height}
         region={{
