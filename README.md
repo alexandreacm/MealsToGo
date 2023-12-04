@@ -8,6 +8,7 @@
 
 ![cover](.github/cover.png?style=flat)
 
+![cover](.github/meals-to-go-architecture.png?style=flat)
 
 ## 💻 Project
 
