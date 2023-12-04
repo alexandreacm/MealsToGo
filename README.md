@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="FedDigital" height="80" title="Plant Manager" src=".github/logo.png" />
+  <img alt="" height="80" title="" src=".github/logo.png" />
 </h1>
 
 <p align="center">
@@ -8,7 +8,6 @@
 
 ![cover](.github/cover.png?style=flat)
 
-![cover](.github/meals-to-go-architecture.png?style=flat)
 
 ## 💻 Project
 
